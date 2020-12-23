@@ -66,7 +66,9 @@ router.get(
 	async(req, res) => {
 		try {
 			
-			const logsList = await Log.find()
+			const logsList = await Log.find().populate('user books')
+
+			// console.log(logsList)
 
 			if (!logsList || logsList === undefined || logsList.length == 0) {
 				return res.status(400).json({message: 'Список записей пуст'})

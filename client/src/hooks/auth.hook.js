@@ -6,6 +6,7 @@ export const useAuth = () => {
 
 	const [token, setToken] = useState(null)
 	const [userId, setUserId] = useState(null)
+	const [ready, setReady] = useState(false)
 
 	const signIn = useCallback((webToken, id) => {
 		setToken(webToken)
@@ -28,7 +29,9 @@ export const useAuth = () => {
 		if (data && data.token) {
 			signIn(data.token, data.userId)
 		}
+
+		setReady(true)
 	}, [signIn])
 
-	return {signIn, signOut, token, userId}
+	return {signIn, signOut, token, userId, ready}
 }

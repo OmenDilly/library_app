@@ -40,19 +40,22 @@ export const AuthPage = () => {
     return (
         <Grid container direction='row'>
             <Grid item xs={false} sm={1} md={2} lg={3} xl={4}/>
-            <Grid item container xs={12} sm={10} md={8} lg={6} xl={4} >
-                <Grid item xs={12}>
-                    <Typography variant='h3'>Авторизация</Typography>
-                </Grid> 
-                <Grid item xs={12}>
+            <Grid item container xs={12} sm={10} md={8} lg={6} xl={4} style={{margin: '25vh 0'}} alignItems='center' justify='center'>
+                {/* <Grid item xs={12}> */}
+                    <Typography variant='h4' align='center'>Авторизация</Typography>
+                {/* </Grid>  */}
+                {/* <Grid item xs={12}> */}
                     <TextField
                         variant='outlined'
                         label='Логин'
                         id='login' 
                         type="login"
+                        fullWidth
+                        size='small'
+                        margin='dense'
                         // required
-                        style={{width: '100%'}}
                         name='login'
+                        style={{margin: '1vh 0'}}
                         // autoComplete='off' 
                         placeholder='Введите логин' 
                         className="validate input__login" 
@@ -60,16 +63,19 @@ export const AuthPage = () => {
                         onKeyPress={signInHandler}
                         value={form.login}
                     />
-                </Grid>  
-                <Grid item xs={12}>
+                {/* </Grid>   */}
+                {/* <Grid item xs={12}> */}
                     <TextField 
                         variant='outlined'
                         label='Пароль'
                         id='pw' 
                         type="password" 
                         // required
-                        style={{width: '100%'}}
+                        fullWidth
+                        size='small'
+                        margin='dense'
                         name='password'
+                        style={{margin: '1vh 0'}}
                         // autoComplete='off' 
                         placeholder='Введите пароль' 
                         className="validate input__pw"
@@ -77,22 +83,24 @@ export const AuthPage = () => {
                         onKeyPress={signInHandler}
                         value={form.password}
                     />
-                </Grid>
-                <Grid item xs={12}>
+                {/* </Grid> */}
+                {/* <Grid item xs={12}> */}
                     <Button 
                         // disabled='true'
                         variant='contained'
                         name='button'
+                        style={{margin: '1vh 0'}}
                         color='primary'
                         disabled={disabled}
                         fullWidth
+                        margin='dense'
                         onClick={signInHandler}
                         disabled={loading}
                     >
                         Войти
                     </Button>
                     <div>{error}</div>
-                </Grid>
+                {/* </Grid> */}
             </Grid>
             <Grid item xs={false} sm={1} md={2} lg={3} xl={4}/>
         </Grid>

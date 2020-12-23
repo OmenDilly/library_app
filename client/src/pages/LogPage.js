@@ -11,12 +11,12 @@ export const LogPage = () => {
 
 	const [data, setData] = useState({
 		columns: [
-			{title: 'Дата', field: 'name'},
-			{title: 'Пользователь', field: 'user'},
+			{title: 'Дата', field: 'date'},
+			{title: 'Пользователь', field: 'user.name'},
 			{title: 'До', field: 'endDate'},
 			{title: 'Статус', field: 'status'},
 		],
-		data: query =>
+		values: query =>
 		new Promise((resolve, reject) => {
 				// prepare your data and then call resolve like this:
 				request('api/log', 'GET', null, {

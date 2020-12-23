@@ -12,15 +12,23 @@ const schema = new Schema({
 	},
 	name: {
 		type: String,
-		required: true,
+		// required: true,
+	},
+	fullName: {
+		type: String,
+		// required: true,
+	},
+	initials: {
+		type: String,
+		// required: true,
 	},
 	surname: {
 		type: String,
-		required: true,
+		// required: true,
 	},
 	patronomyc: {
 		type: String,
-		required: true,
+		// required: true,
 	},
 	status: {
 		type: String,

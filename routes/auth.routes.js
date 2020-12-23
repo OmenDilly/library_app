@@ -37,12 +37,17 @@ router.post(
 				return res.status(400).json({ message: 'Пользователь с таким логином ужде существует'})
 			}
 
+			const fullName = `${surname} ${name} ${patronomyc}`
+			const initials = `${surname} ${name.charAt(0)}. ${patronomyc.charAt(0)}.`
+
 			const hashedPassword = await bcrypt.hash(password, 12) 
 
 			const user = new User({
 				login,
 				password: hashedPassword,
 				name,
+				fullName,
+				initials,
 				surname,
 				patronomyc,
 				role,

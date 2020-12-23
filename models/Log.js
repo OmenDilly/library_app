@@ -16,12 +16,18 @@ const schema = new Schema({
 	user: {
 		type: Types.ObjectId,
 		required: true,
+		ref: 'User'
 	},
 	books: [{
 		type: Types.ObjectId,
 		required: true,
 		ref: 'Book'
 	}],
+	owner: {
+		type: Types.ObjectId,
+		required: true,
+		ref: 'User'
+	}
 })
 
 module.exports = model('Log', schema)

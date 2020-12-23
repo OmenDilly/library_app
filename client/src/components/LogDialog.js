@@ -141,15 +141,18 @@ export function LogDialog(props) {
               setOpen(false);
             }}
             open={open}
+            size='small'
+            fullwidth
+            margin='dense'
             onChange={handleChangeUser}
             // getOptionSelected={(option) => console.log(option.title)}
             getOptionLabel={(option) => option.name}
-            style={{ width: 300 }}
             renderInput={(params) => (
               <TextField
                 {...params}
                 label="Asynchronous"
                 variant="outlined"
+                margin='dense'
                 InputProps={{
                   ...params.InputProps,
                   endAdornment: (
@@ -167,6 +170,8 @@ export function LogDialog(props) {
             options={books}
             disableCloseOnSelect
             fullWidth
+            margin='dense'
+            size='small'
             onChange={handleChangeBooks}
             getOptionLabel={(option) => option.name}
             renderOption={(option, { selected }) => (
@@ -180,7 +185,7 @@ export function LogDialog(props) {
               </>
             )}
             renderInput={(params) => (
-              <TextField {...params} variant="outlined" fullwidth size='small' label="Книги" placeholder="Favorites" />
+              <TextField {...params} variant="outlined" label="Книги" margin='dense' placeholder="Favorites" />
             )}
           />
               <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
