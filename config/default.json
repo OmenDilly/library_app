@@ -1,0 +1,5 @@
+{
+	"port": "5000",
+	"MURI": "mongodb+srv://Omen:1234@library0.wjixd.mongodb.net/<dbname>?retryWrites=true&w=majority",
+	"secret": "nasdim"
+}
