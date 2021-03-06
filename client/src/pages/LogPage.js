@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react'
 import { CustomTable } from '../components/CustomTable'
+import { LogDetail } from '../components/LogDetail'
 import { DataContext } from '../context/DataContext'
 import { useApi } from '../hooks/useApi'
 
@@ -12,7 +13,7 @@ export const LogPage = () => {
 	const [data, setData] = useState({
 		columns: [
 			{title: 'Дата', field: 'date'},
-			{title: 'Пользователь', field: 'user.name'},
+			{title: 'Пользователь', field: 'user.initials'},
 			{title: 'До', field: 'endDate'},
 			{title: 'Статус', field: 'status'},
 		],
@@ -30,20 +31,35 @@ export const LogPage = () => {
 		})
 	})
 
-	const addLog = () => {
-		console.log('add')
+	const addLog = async (data) => {
+		const added = await request(`api/log`, 'POST', {data}, {
+			Authorization: `Bearer ${userData.token}`
+		})
+		console.log(added)
 	}
-	const deleteLog = () => {
-		console.log('delete')
+	const deleteLog = async (data) => {
+		const deleted = await request(`api/log/${data._id}`, 'DELETE', null, {
+			Authorization: `Bearer ${userData.token}`
+		})
+		console.log(deleted)
 	}
-	const updateLog = () => {
-		console.log('update')
+	const updateLog = async (data) => {
+		const updated = await request(`api/log/${data._id}`, 'PATCH', {data}, {
+			Authorization: `Bearer ${userData.token}`
+		})
+		console.log(updated)
+	}
+
+	const logDetail = (data) => {
+		return (
+			<LogDetail data={data}/>
+		)
 	}
 
 	return (
 		<div>
 			{
-				CustomTable(data, addLog, deleteLog, updateLog)
+				CustomTable(data, addLog, deleteLog, updateLog, logDetail)
 			}
 		</div>
 	)

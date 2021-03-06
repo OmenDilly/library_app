@@ -112,9 +112,9 @@ export function LogDialog(props) {
 	const handleSubmit = async () => {
     try {
       clearError()
-      setData(prevData => {
-        return {...prevData, date: Date.now()}
-       })
+      // setData(prevData => {
+      //   return {...prevData, date: Date.now()}
+      //  })
       const respomse = await request('/api/log', 'POST', {...data}, {
         Authorization: `Bearer ${userData.token}`
       })
@@ -150,7 +150,7 @@ export function LogDialog(props) {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Asynchronous"
+                label="Пользователь"
                 variant="outlined"
                 margin='dense'
                 InputProps={{

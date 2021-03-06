@@ -2,7 +2,7 @@ import MaterialTable from 'material-table'
 import { createRef, useState } from 'react'
 import { LogDialog } from './LogDialog'
 
-export function CustomTable(data, addFunc = null, deleteFunc = null, updateFunc = null) {
+export function CustomTable(data, addFunc = null, deleteFunc = null, updateFunc = null, detail = null) {
 
   // const [open, setOpen] = useState(false)
 
@@ -24,14 +24,8 @@ export function CustomTable(data, addFunc = null, deleteFunc = null, updateFunc 
         columns={data.columns}
         data={data.values}
         title=""
-        tableRef={tableRef}
-        detailPanel={rowData => {
-          return (
-            <div>
-              {rowData.name}
-            </div>
-          )
-        }}
+        // tableRef={tableRef}
+        detailPanel={detail}
         actions={[
           // {
           //   icon: 'add',
@@ -39,12 +33,12 @@ export function CustomTable(data, addFunc = null, deleteFunc = null, updateFunc 
           //   isFreeAction: true,
           //   onClick: addButtonClick
           // },
-          {
-            icon: 'refresh',
-            tooltip: 'Обновить',
-            isFreeAction: true,
-            onClick: () => tableRef.current && tableRef.current.onQueryChange(),
-          }
+          // {
+          //   icon: 'refresh',
+          //   tooltip: 'Обновить',
+          //   isFreeAction: true,
+          //   onClick: () => tableRef.current && tableRef.current.onQueryChange(),
+          // }
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -73,17 +67,7 @@ export function CustomTable(data, addFunc = null, deleteFunc = null, updateFunc 
                 resolve();
               }, 1000)
             }),
-          onRowDelete: oldData =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                // const dataDelete = [...data];
-                // const index = oldData.tableData.id;
-                // dataDelete.splice(index, 1);
-                // setData([...dataDelete]);
-                
-                resolve()
-              }, 1000)
-            }),
+          onRowDelete: oldData => deleteFunc(oldData)
         }}
         localization={{
                   body: {
